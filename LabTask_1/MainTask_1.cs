@@ -22,11 +22,19 @@ class TRectangle
 
     public void set()
     {
-        Console.WriteLine("Set rectangle length:");
-        this.length = float.Parse(Console.ReadLine());
-        
-        Console.WriteLine("Set rectangle width:");
-        this.width = float.Parse(Console.ReadLine());
+        try
+        {
+            Console.WriteLine("Set rectangle length:");
+            this.length = float.Parse(Console.ReadLine());
+
+            Console.WriteLine("Set rectangle width:");
+            this.width = float.Parse(Console.ReadLine());
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"You made mistake while setting the variable, try again. The reason is {e}");
+            Environment.Exit(0);
+        }
     }
     public void show()
     {
@@ -64,22 +72,32 @@ class TRectangle
 
     public void compare(TRectangle instance)
     {
-        if (instance.length == this.length)
+        try
         {
-            Console.WriteLine("Rectangles have the same length!");
+            if (instance.length == this.length)
+            {
+                Console.WriteLine("Rectangles have the same length!");
+            }
+            else
+            {
+                Console.WriteLine("Length of rectangles are different!");
+                ;
+            }
+
+            if (instance.width == this.width)
+            {
+                Console.WriteLine("Rectangles have the same width!");
+            }
+            else
+            {
+                Console.WriteLine("Width of rectangles are different!");
+                ;
+            }
         }
-        else
+        catch (Exception e)
         {
-            Console.WriteLine("Length of rectangles are different!"); ;
-        }
-        
-        if (instance.width == this.width)
-        {
-            Console.WriteLine("Rectangles have the same width!");
-        }
-        else
-        {
-            Console.WriteLine("Width of rectangles are different!"); ;
+            Console.WriteLine($"Some of the variables are not defined so comparing is impossible. The reason is {e}");
+            Environment.Exit(0);
         }
     }
     
@@ -116,20 +134,27 @@ class TParallelepiped : TRectangle
     
     public new void set()
     {
-        Console.WriteLine("Set parallelepiped length:");
-        this.length = float.Parse(Console.ReadLine());
-        
-        Console.WriteLine("Set parallelepiped width:");
-        this.width = float.Parse(Console.ReadLine());
-        
-        Console.WriteLine("Set parallelepiped height:");
-        this.height = float.Parse(Console.ReadLine());
+        try
+        {
+            Console.WriteLine("Set parallelepiped length:");
+            this.length = float.Parse(Console.ReadLine());
+
+            Console.WriteLine("Set parallelepiped width:");
+            this.width = float.Parse(Console.ReadLine());
+
+            Console.WriteLine("Set parallelepiped height:");
+            this.height = float.Parse(Console.ReadLine());
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"You made mistake while setting the variable, try again. The reason is {e}");
+            Environment.Exit(0);
+        }
     }
     public new void show()
     {
         Console.WriteLine($"Parallelepiped length is {this.length} and it's width is {this.width}, also height is {this.height}!");
     }
-
     
     public new void findArea()
     {
@@ -179,31 +204,42 @@ class TParallelepiped : TRectangle
 
     public new void compare(TParallelepiped instance)
     {
-        if (instance.length == this.length)
+        try
         {
-            Console.WriteLine("Parallelepiped have the same length!");
+            if (instance.length == this.length)
+            {
+                Console.WriteLine("Parallelepiped have the same length!");
+            }
+            else
+            {
+                Console.WriteLine("Length of parallelepiped are different!");
+                ;
+            }
+
+            if (instance.width == this.width)
+            {
+                Console.WriteLine("Parallelepiped have the same width!");
+            }
+            else
+            {
+                Console.WriteLine("Width of parallelepiped are different!");
+                ;
+            }
+
+            if (instance.height == this.height)
+            {
+                Console.WriteLine("Parallelepiped have the same height!");
+            }
+            else
+            {
+                Console.WriteLine("Height of parallelepiped are different!");
+                ;
+            }
         }
-        else
+        catch (Exception e)
         {
-            Console.WriteLine("Length of parallelepiped are different!"); ;
-        }
-        
-        if (instance.width == this.width)
-        {
-            Console.WriteLine("Parallelepiped have the same width!");
-        }
-        else
-        {
-            Console.WriteLine("Width of parallelepiped are different!"); ;
-        }
-        
-        if (instance.height == this.height)
-        {
-            Console.WriteLine("Parallelepiped have the same height!");
-        }
-        else
-        {
-            Console.WriteLine("Height of parallelepiped are different!"); ;
+            Console.WriteLine($"Some of the variables are not defined so comparing is impossible. The reason is {e}");
+            Environment.Exit(0);
         }
     }
     
@@ -221,26 +257,36 @@ class TParallelepiped : TRectangle
     }
 }
 
-public class Main_5
+public class LabTask_1
 {
+    static private TRectangle rectangle;
+    static private TParallelepiped parallelepiped;
     public static void Main() {
-        TRectangle rectangle = new TRectangle();
+        rectangle = new TRectangle();
         rectangle.set();
         rectangle.show();
         rectangle *= 5;
         rectangle.show();
+        rectangle += new TRectangle(10, 100);
+        rectangle.show();
+        rectangle -= new TRectangle(rectangle);
+        rectangle.show();
         rectangle.findPerimeter();
         rectangle.findArea();
-        rectangle.compare(new TRectangle(10, 50));
+        rectangle.compare(new TRectangle(0, 10));
 
-        TParallelepiped parallelepiped = new TParallelepiped();
+        parallelepiped = new TParallelepiped();
         parallelepiped.set();
         parallelepiped.show();
         parallelepiped *= 5;
         parallelepiped.show();
+        parallelepiped += new TParallelepiped(10, 100, 1000);
+        parallelepiped.show();
+        parallelepiped -= new TParallelepiped(parallelepiped);
+        parallelepiped.show();
         parallelepiped.findPerimeter();
         parallelepiped.findArea();
         parallelepiped.findVolume();
-        parallelepiped.compare(new TParallelepiped(50, 50, 100));
+        parallelepiped.compare(new TParallelepiped(0, 10, 100));
     }
 }
