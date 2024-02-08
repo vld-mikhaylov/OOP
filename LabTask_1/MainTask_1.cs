@@ -11,8 +11,16 @@ class TRectangle
     }
     public TRectangle(float? length, float? width)
     {
-        this.length = length;
-        this.width = width;
+        if (length > 0 && width > 0 && length != null && width != null)
+        {
+            this.length = length;
+            this.width = width;
+        }
+        else
+        {
+            Console.WriteLine("One of the parameters is negative, equal 0 or null. To fix this - make it initialised positive."); 
+            Environment.Exit(0);
+        }
     }
     public TRectangle(TRectangle instance)
     {
@@ -24,11 +32,25 @@ class TRectangle
     {
         try
         {
-            Console.WriteLine("Set rectangle length:");
-            this.length = float.Parse(Console.ReadLine());
+            while (length <= 0 || length == null)
+            {
+                Console.WriteLine("Set rectangle length:");
+                this.length = float.Parse(Console.ReadLine());
+                if (length <= 0)
+                {
+                    Console.WriteLine("Your length is incorrect.");
+                }
+            }
 
-            Console.WriteLine("Set rectangle width:");
-            this.width = float.Parse(Console.ReadLine());
+            while (width <= 0 || width == null)
+            {
+                Console.WriteLine("Set rectangle width:");
+                this.width = float.Parse(Console.ReadLine());
+                if (width <= 0)
+                {
+                    Console.WriteLine("Your width is incorrect.");
+                }
+            }
         }
         catch (Exception e)
         {
@@ -49,10 +71,8 @@ class TRectangle
         }
         else
         {
-            Console.WriteLine("Error occured while searching an area of rectangle!");
-            Console.WriteLine("Check if there is no mistakes in variables:!");
-            Console.WriteLine($"Length: {this.length}");
-            Console.WriteLine($"Width: {this.width}");
+            Console.WriteLine("One of the parameters is null. To fix this - try to initialise it.");
+            Environment.Exit(0);
         }
     }
     public void findPerimeter()
@@ -63,16 +83,15 @@ class TRectangle
         }
         else
         {
-            Console.WriteLine("Error occured while searching a perimeter of rectangle!");
-            Console.WriteLine("Check if there is no mistakes in variables:!");
-            Console.WriteLine($"Length: {this.length}");
-            Console.WriteLine($"Width: {this.width}");
+            Console.WriteLine("One of the parameters is null. To fix this - try to initialise it.");
+            Environment.Exit(0);
         }
     }
 
     public void compare(TRectangle instance)
     {
-        try
+        if (instance.length != null && this.length != null && 
+            instance.width != null && this.width != null)
         {
             if (instance.length == this.length)
             {
@@ -81,9 +100,8 @@ class TRectangle
             else
             {
                 Console.WriteLine("Length of rectangles are different!");
-                ;
             }
-
+            
             if (instance.width == this.width)
             {
                 Console.WriteLine("Rectangles have the same width!");
@@ -91,27 +109,75 @@ class TRectangle
             else
             {
                 Console.WriteLine("Width of rectangles are different!");
-                ;
             }
         }
-        catch (Exception e)
+        else
         {
-            Console.WriteLine($"Some of the variables are not defined so comparing is impossible. The reason is {e}");
+            Console.WriteLine("One of the parameters is null. To fix this - try to initialise it.");
             Environment.Exit(0);
         }
     }
     
     public static TRectangle operator +(TRectangle rectangle1, TRectangle rectangle2)
+    
     {
-        return new TRectangle(rectangle1.length + rectangle2.length, rectangle1.width + rectangle2.width);
+        if (rectangle1.length != null && rectangle2.length != null && 
+            rectangle1.width != null && rectangle2.width != null)
+        {
+            return new TRectangle(rectangle1.length + rectangle2.length, 
+                rectangle1.width + rectangle2.width);
+        }
+        
+        Console.WriteLine("One of the parameters of instances is null. To fix this - try to initialise it."); 
+        Environment.Exit(0);
+        return null;
     }
     public static TRectangle operator -(TRectangle rectangle1, TRectangle rectangle2)
     {
-        return new TRectangle(rectangle1.length - rectangle2.length, rectangle1.width - rectangle2.width);
+        if (rectangle1.length != null && rectangle2.length != null && 
+            rectangle1.width != null && rectangle2.width != null)
+        {
+            float? resultLength, resultWidth;
+            if (rectangle1.length >= rectangle2.length)
+            {
+                resultLength = rectangle1.length - rectangle2.length;
+            }
+            else
+            {
+                resultLength = rectangle2.length - rectangle1.length;
+            }
+
+            if (rectangle1.width >= rectangle2.width)
+            {
+                resultWidth = rectangle1.width - rectangle2.width;
+            }
+            else
+            {
+                resultWidth = rectangle2.width - rectangle1.width;
+            }
+
+            return new TRectangle(resultLength, resultWidth);
+        }
+
+        Console.WriteLine("One of the parameters of instances is null. To fix this - try to initialise it."); 
+        Environment.Exit(0);
+        return null;
     }
     public static TRectangle operator *(TRectangle rectangle1, float variable)
     {
-        return new TRectangle(rectangle1.length * variable, rectangle1.width * variable);
+        if (variable > 0 && variable != null && 
+            rectangle1.length != null && 
+            rectangle1.width != null)
+        {
+            return new TRectangle(rectangle1.length * variable, 
+                rectangle1.width * variable);
+        }
+        
+        Console.WriteLine("Variable is negative, equal 0 or null. To fix this - make it initialised positive.");
+        Console.WriteLine("OR");
+        Console.WriteLine("One of the parameters of instances is null. To fix this - try to initialise it."); 
+        Environment.Exit(0);
+        return null;
     }
 }
 
@@ -125,7 +191,17 @@ class TParallelepiped : TRectangle
     }
     public TParallelepiped(float? length, float? width, float? height) : base(length, width)
     {
-        this.height = height;
+        if (length > 0 && width > 0 && this.height > 0 && length != null && width != null && this.height > 0)
+        {
+            this.length = length;
+            this.width = width;
+            this.height = height;
+        }
+        else
+        {
+            Console.WriteLine("One of the parameters is negative, equal 0 or null. To fix this - make it initialised positive."); 
+            Environment.Exit(0);
+        }
     }
     public TParallelepiped(TParallelepiped instance) : base(instance)
     {
@@ -136,14 +212,35 @@ class TParallelepiped : TRectangle
     {
         try
         {
-            Console.WriteLine("Set parallelepiped length:");
-            this.length = float.Parse(Console.ReadLine());
+            while (length <= 0 || length == null)
+            {
+                Console.WriteLine("Set parallelepiped length:");
+                this.length = float.Parse(Console.ReadLine());
+                if (length <= 0)
+                {
+                    Console.WriteLine("Your length is incorrect.");
+                }
+            }
 
-            Console.WriteLine("Set parallelepiped width:");
-            this.width = float.Parse(Console.ReadLine());
-
-            Console.WriteLine("Set parallelepiped height:");
-            this.height = float.Parse(Console.ReadLine());
+            while (width <= 0 || width == null)
+            {
+                Console.WriteLine("Set parallelepiped width:");
+                this.width = float.Parse(Console.ReadLine());
+                if (width <= 0)
+                {
+                    Console.WriteLine("Your width is incorrect.");
+                }
+            }
+            
+            while (height <= 0 || height == null)
+            {
+                Console.WriteLine("Set parallelepiped height:");
+                this.height = float.Parse(Console.ReadLine());
+                if (height <= 0)
+                {
+                    Console.WriteLine("Your height is incorrect.");
+                }
+            }
         }
         catch (Exception e)
         {
@@ -164,11 +261,8 @@ class TParallelepiped : TRectangle
         }
         else
         {
-            Console.WriteLine("Error occured while searching an area of parallelepiped!");
-            Console.WriteLine("Check if there is no mistakes in variables:!");
-            Console.WriteLine($"Length: {this.length}");
-            Console.WriteLine($"Width: {this.width}");
-            Console.WriteLine($"Height: {this.height}");
+            Console.WriteLine("One of the parameters is null. To fix this - try to initialise it.");
+            Environment.Exit(0);
         }
     }
     public new void findPerimeter()
@@ -179,11 +273,8 @@ class TParallelepiped : TRectangle
         }
         else
         {
-            Console.WriteLine("Error occured while searching a perimeter of parallelepiped!");
-            Console.WriteLine("Check if there is no mistakes in variables:!");
-            Console.WriteLine($"Length: {this.length}");
-            Console.WriteLine($"Width: {this.width}");
-            Console.WriteLine($"Height: {this.height}");
+            Console.WriteLine("One of the parameters is null. To fix this - try to initialise it.");
+            Environment.Exit(0);
         }
     }
     public void findVolume()
@@ -194,66 +285,124 @@ class TParallelepiped : TRectangle
         }
         else
         {
-            Console.WriteLine("Error occured while searching an area of parallelepiped!");
-            Console.WriteLine("Check if there is no mistakes in variables:!");
-            Console.WriteLine($"Length: {this.length}");
-            Console.WriteLine($"Width: {this.width}");
-            Console.WriteLine($"Height: {this.height}");
+            Console.WriteLine("One of the parameters is null. To fix this - try to initialise it.");
+            Environment.Exit(0);
         }
     }
 
     public new void compare(TParallelepiped instance)
     {
-        try
+        if (instance.length != null && this.length != null && 
+            instance.width != null && this.width != null && 
+            instance.height != null && this.height != null)
         {
             if (instance.length == this.length)
             {
-                Console.WriteLine("Parallelepiped have the same length!");
+                Console.WriteLine("Parallelepipeds have the same length!");
             }
             else
             {
-                Console.WriteLine("Length of parallelepiped are different!");
-                ;
+                Console.WriteLine("Length of parallelepipeds are different!");
             }
 
             if (instance.width == this.width)
             {
-                Console.WriteLine("Parallelepiped have the same width!");
+                Console.WriteLine("Parallelepipeds have the same width!");
             }
             else
             {
-                Console.WriteLine("Width of parallelepiped are different!");
-                ;
+                Console.WriteLine("Width of parallelepipeds are different!");
             }
-
+            
             if (instance.height == this.height)
             {
-                Console.WriteLine("Parallelepiped have the same height!");
+                Console.WriteLine("Parallelepipeds have the same height!");
             }
             else
             {
-                Console.WriteLine("Height of parallelepiped are different!");
-                ;
+                Console.WriteLine("Height of parallelepipeds are different!");
             }
         }
-        catch (Exception e)
+        else
         {
-            Console.WriteLine($"Some of the variables are not defined so comparing is impossible. The reason is {e}");
+            Console.WriteLine("One of the parameters is null. To fix this - try to initialise it.");
             Environment.Exit(0);
         }
     }
     
     public static TParallelepiped operator +(TParallelepiped parallelepiped1, TParallelepiped parallelepiped2)
     {
-        return new TParallelepiped(parallelepiped1.length + parallelepiped2.length, parallelepiped1.width + parallelepiped2.width, parallelepiped1.height + parallelepiped2.height);
+        if (parallelepiped1.length != null && parallelepiped2.length != null && 
+            parallelepiped1.width != null && parallelepiped2.width != null && 
+            parallelepiped1.height != null && parallelepiped2.height != null)
+        {
+            return new TParallelepiped(parallelepiped1.length + parallelepiped2.length, 
+                parallelepiped1.width + parallelepiped2.width, 
+                parallelepiped1.height + parallelepiped2.height);
+        }
+        
+        Console.WriteLine("One of the parameters of instances is null. To fix this - try to initialise it."); 
+        Environment.Exit(0);
+        return null;
     }
     public static TParallelepiped operator -(TParallelepiped parallelepiped1, TParallelepiped parallelepiped2)
     {
-        return new TParallelepiped(parallelepiped1.length - parallelepiped2.length, parallelepiped1.width - parallelepiped2.width, parallelepiped1.height - parallelepiped2.height);
+        if (parallelepiped1.length != null && parallelepiped2.length != null && 
+            parallelepiped1.width != null && parallelepiped2.width != null &&
+            parallelepiped1.height != null && parallelepiped2.height != null)
+        {
+            float? resultLength, resultWidth, resultHeight;
+            if (parallelepiped1.length >= parallelepiped2.length)
+            {
+                resultLength = parallelepiped1.length - parallelepiped2.length;
+            }
+            else
+            {
+                resultLength = parallelepiped2.length - parallelepiped1.length;
+            }
+
+            if (parallelepiped1.width >= parallelepiped2.width)
+            {
+                resultWidth = parallelepiped1.width - parallelepiped2.width;
+            }
+            else
+            {
+                resultWidth = parallelepiped2.width - parallelepiped1.width;
+            }
+            
+            if (parallelepiped1.height >= parallelepiped2.height)
+            {
+                resultHeight = parallelepiped1.height - parallelepiped2.height;
+            }
+            else
+            {
+                resultHeight = parallelepiped2.height - parallelepiped1.height;
+            }
+
+            return new TParallelepiped(resultLength, resultWidth, resultHeight);
+        }
+
+        Console.WriteLine("One of the parameters of instances is null. To fix this - try to initialise it."); 
+        Environment.Exit(0);
+        return null;
     }
     public static TParallelepiped operator *(TParallelepiped parallelepiped1, float variable)
     {
-        return new TParallelepiped(parallelepiped1.length * variable, parallelepiped1.width * variable, parallelepiped1.height * variable);
+        if (variable > 0 && variable != null && 
+            parallelepiped1.length != null && 
+            parallelepiped1.width != null && 
+            parallelepiped1.height != null)
+        {
+            return new TParallelepiped(parallelepiped1.length * variable, 
+                parallelepiped1.width * variable, 
+                parallelepiped1.height * variable);
+        }
+        
+        Console.WriteLine("Variable is negative, equal 0 or null. To fix this - make it initialised positive.");
+        Console.WriteLine("OR");
+        Console.WriteLine("One of the parameters of instances is null. To fix this - try to initialise it."); 
+        Environment.Exit(0);
+        return null;
     }
 }
 
@@ -267,26 +416,26 @@ public class LabTask_1
         rectangle.show();
         rectangle *= 5;
         rectangle.show();
-        rectangle += new TRectangle(10, 100);
+        rectangle += new TRectangle(rectangle);
         rectangle.show();
-        rectangle -= new TRectangle(rectangle);
+        rectangle -= new TRectangle(10, 10);
         rectangle.show();
         rectangle.findPerimeter();
         rectangle.findArea();
-        rectangle.compare(new TRectangle(0, 10));
+        rectangle.compare(new TRectangle(10, 10));
 
         parallelepiped = new TParallelepiped();
         parallelepiped.set();
         parallelepiped.show();
         parallelepiped *= 5;
         parallelepiped.show();
-        parallelepiped += new TParallelepiped(10, 100, 1000);
+        parallelepiped += new TParallelepiped(parallelepiped);
         parallelepiped.show();
-        parallelepiped -= new TParallelepiped(parallelepiped);
+        parallelepiped -= new TParallelepiped(10, 10, 10);
         parallelepiped.show();
         parallelepiped.findPerimeter();
         parallelepiped.findArea();
         parallelepiped.findVolume();
-        parallelepiped.compare(new TParallelepiped(0, 10, 100));
+        parallelepiped.compare(new TParallelepiped(10, 10, 10));
     }
 }
