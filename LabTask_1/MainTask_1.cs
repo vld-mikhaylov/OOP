@@ -32,7 +32,7 @@ class TRectangle
     {
         try
         {
-            while (length <= 0 || length == null)
+            while (length <= 0 || length == null || length > 100)
             {
                 Console.WriteLine("Set rectangle length:");
                 this.length = float.Parse(Console.ReadLine());
@@ -42,7 +42,7 @@ class TRectangle
                 }
             }
 
-            while (width <= 0 || width == null)
+            while (width <= 0 || width == null || width > 100)
             {
                 Console.WriteLine("Set rectangle width:");
                 this.width = float.Parse(Console.ReadLine());
@@ -215,7 +215,7 @@ class TParallelepiped : TRectangle
     {
         try
         {
-            while (length <= 0 || length == null)
+            while (length <= 0 || length == null || length > 100)
             {
                 Console.WriteLine("Set parallelepiped length:");
                 this.length = float.Parse(Console.ReadLine());
@@ -225,7 +225,7 @@ class TParallelepiped : TRectangle
                 }
             }
 
-            while (width <= 0 || width == null)
+            while (width <= 0 || width == null || width > 100)
             {
                 Console.WriteLine("Set parallelepiped width:");
                 this.width = float.Parse(Console.ReadLine());
@@ -235,7 +235,7 @@ class TParallelepiped : TRectangle
                 }
             }
             
-            while (height <= 0 || height == null)
+            while (height <= 0 || height == null || height > 100)
             {
                 Console.WriteLine("Set parallelepiped height:");
                 this.height = float.Parse(Console.ReadLine());
