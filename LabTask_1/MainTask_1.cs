@@ -11,14 +11,14 @@ class TRectangle
     }
     public TRectangle(float? length, float? width)
     {
-        if (length > 0 && width > 0 && length != null && width != null)
+        if (length > 0 && width > 0 && length != null && width != null && length <= 100 && width <= 100)
         {
             this.length = length;
             this.width = width;
         }
         else
         {
-            Console.WriteLine("One of the parameters is negative, equal 0 or null. To fix this - make it initialised positive."); 
+            Console.WriteLine("One of the parameters have incorrect value."); 
             Environment.Exit(0);
         }
     }
@@ -36,7 +36,7 @@ class TRectangle
             {
                 Console.WriteLine("Set rectangle length:");
                 this.length = float.Parse(Console.ReadLine());
-                if (length <= 0)
+                if (length <= 0 || length > 100)
                 {
                     Console.WriteLine("Your length is incorrect.");
                 }
@@ -46,7 +46,7 @@ class TRectangle
             {
                 Console.WriteLine("Set rectangle width:");
                 this.width = float.Parse(Console.ReadLine());
-                if (width <= 0)
+                if (width <= 0 || width > 100)
                 {
                     Console.WriteLine("Your width is incorrect.");
                 }
@@ -54,7 +54,8 @@ class TRectangle
         }
         catch (Exception e)
         {
-            Console.WriteLine($"You made mistake while setting the variable, try again. The reason is {e}");
+            Console.WriteLine($"You made grammar mistake while setting the variable. The reason is...");
+            Console.WriteLine($"{e}");
             Environment.Exit(0);
         }
     }
@@ -71,7 +72,7 @@ class TRectangle
         }
         else
         {
-            Console.WriteLine("One of the parameters is null. To fix this - try to initialise it.");
+            Console.WriteLine("One of the parameters is null. Can't find area.");
             Environment.Exit(0);
         }
     }
@@ -83,7 +84,7 @@ class TRectangle
         }
         else
         {
-            Console.WriteLine("One of the parameters is null. To fix this - try to initialise it.");
+            Console.WriteLine("One of the parameters is null. Can't find perimeter.");
             Environment.Exit(0);
         }
     }
@@ -113,7 +114,7 @@ class TRectangle
         }
         else
         {
-            Console.WriteLine("One of the parameters is null. To fix this - try to initialise it.");
+            Console.WriteLine("One of the parameters is null. Can't compare values.");
             Environment.Exit(0);
         }
     }
@@ -128,7 +129,7 @@ class TRectangle
                 rectangle1.width + rectangle2.width);
         }
         
-        Console.WriteLine("One of the parameters of instances is null. To fix this - try to initialise it."); 
+        Console.WriteLine("One of the parameters is null. Can't add instances."); 
         Environment.Exit(0);
         return null;
     }
@@ -159,7 +160,7 @@ class TRectangle
             return new TRectangle(resultLength, resultWidth);
         }
 
-        Console.WriteLine("One of the parameters of instances is null. To fix this - try to initialise it."); 
+        Console.WriteLine("One of the parameters is null. Can't subtract instances."); 
         Environment.Exit(0);
         return null;
     }
@@ -173,9 +174,9 @@ class TRectangle
                 rectangle1.width * variable);
         }
         
-        Console.WriteLine("Variable is negative, equal 0 or null. To fix this - make it initialised positive.");
+        Console.WriteLine("Variable have incorrect value.");
         Console.WriteLine("OR");
-        Console.WriteLine("One of the parameters of instances is null. To fix this - try to initialise it."); 
+        Console.WriteLine("One of the parameters is null. Can't multiply instances."); 
         Environment.Exit(0);
         return null;
     }
@@ -191,7 +192,9 @@ class TParallelepiped : TRectangle
     }
     public TParallelepiped(float? length, float? width, float? height) : base(length, width)
     {
-        if (length > 0 && width > 0 && this.height > 0 && length != null && width != null && this.height > 0)
+        if (length > 0 && width > 0 && height > 0 && 
+            length != null && width != null && height != null
+            && length <= 100 && width <= 100 && height <= 100)
         {
             this.length = length;
             this.width = width;
@@ -199,7 +202,7 @@ class TParallelepiped : TRectangle
         }
         else
         {
-            Console.WriteLine("One of the parameters is negative, equal 0 or null. To fix this - make it initialised positive."); 
+            Console.WriteLine("One of the parameters have incorrect value."); 
             Environment.Exit(0);
         }
     }
@@ -216,7 +219,7 @@ class TParallelepiped : TRectangle
             {
                 Console.WriteLine("Set parallelepiped length:");
                 this.length = float.Parse(Console.ReadLine());
-                if (length <= 0)
+                if (length <= 0 || length > 100)
                 {
                     Console.WriteLine("Your length is incorrect.");
                 }
@@ -226,7 +229,7 @@ class TParallelepiped : TRectangle
             {
                 Console.WriteLine("Set parallelepiped width:");
                 this.width = float.Parse(Console.ReadLine());
-                if (width <= 0)
+                if (width <= 0 || width > 100)
                 {
                     Console.WriteLine("Your width is incorrect.");
                 }
@@ -236,7 +239,7 @@ class TParallelepiped : TRectangle
             {
                 Console.WriteLine("Set parallelepiped height:");
                 this.height = float.Parse(Console.ReadLine());
-                if (height <= 0)
+                if (height <= 0 || height > 100)
                 {
                     Console.WriteLine("Your height is incorrect.");
                 }
@@ -244,7 +247,8 @@ class TParallelepiped : TRectangle
         }
         catch (Exception e)
         {
-            Console.WriteLine($"You made mistake while setting the variable, try again. The reason is {e}");
+            Console.WriteLine($"You made grammar mistake while setting the variable. The reason is...");
+            Console.WriteLine($"{e}");
             Environment.Exit(0);
         }
     }
@@ -261,7 +265,7 @@ class TParallelepiped : TRectangle
         }
         else
         {
-            Console.WriteLine("One of the parameters is null. To fix this - try to initialise it.");
+            Console.WriteLine("One of the parameters is null. Can't find area.");
             Environment.Exit(0);
         }
     }
@@ -273,7 +277,7 @@ class TParallelepiped : TRectangle
         }
         else
         {
-            Console.WriteLine("One of the parameters is null. To fix this - try to initialise it.");
+            Console.WriteLine("One of the parameters is null. Can't find perimeter.");
             Environment.Exit(0);
         }
     }
@@ -285,7 +289,7 @@ class TParallelepiped : TRectangle
         }
         else
         {
-            Console.WriteLine("One of the parameters is null. To fix this - try to initialise it.");
+            Console.WriteLine("One of the parameters is null. Can't find volume.");
             Environment.Exit(0);
         }
     }
@@ -325,7 +329,7 @@ class TParallelepiped : TRectangle
         }
         else
         {
-            Console.WriteLine("One of the parameters is null. To fix this - try to initialise it.");
+            Console.WriteLine("One of the parameters is null. Can't compare values.");
             Environment.Exit(0);
         }
     }
@@ -341,7 +345,7 @@ class TParallelepiped : TRectangle
                 parallelepiped1.height + parallelepiped2.height);
         }
         
-        Console.WriteLine("One of the parameters of instances is null. To fix this - try to initialise it."); 
+        Console.WriteLine("One of the parameters is null. Can't add instances."); 
         Environment.Exit(0);
         return null;
     }
@@ -382,7 +386,7 @@ class TParallelepiped : TRectangle
             return new TParallelepiped(resultLength, resultWidth, resultHeight);
         }
 
-        Console.WriteLine("One of the parameters of instances is null. To fix this - try to initialise it."); 
+        Console.WriteLine("One of the parameters is null. Can't subtract instances."); 
         Environment.Exit(0);
         return null;
     }
@@ -398,9 +402,9 @@ class TParallelepiped : TRectangle
                 parallelepiped1.height * variable);
         }
         
-        Console.WriteLine("Variable is negative, equal 0 or null. To fix this - make it initialised positive.");
+        Console.WriteLine("Variable have incorrect value.");
         Console.WriteLine("OR");
-        Console.WriteLine("One of the parameters of instances is null. To fix this - try to initialise it."); 
+        Console.WriteLine("One of the parameters is null. Can't multiply instances."); 
         Environment.Exit(0);
         return null;
     }
