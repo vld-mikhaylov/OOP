@@ -1,0 +1,12 @@
+C:\Users\Exousia_Doxa\RiderProjects\OOP\LabTask_2\bin\Debug\net7.0\LabTask_2.deps.json
+C:\Users\Exousia_Doxa\RiderProjects\OOP\LabTask_2\bin\Debug\net7.0\LabTask_2.dll
+C:\Users\Exousia_Doxa\RiderProjects\OOP\LabTask_2\bin\Debug\net7.0\LabTask_2.pdb
+C:\Users\Exousia_Doxa\RiderProjects\OOP\LabTask_2\obj\Debug\net7.0\LabTask_2.csproj.AssemblyReference.cache
+C:\Users\Exousia_Doxa\RiderProjects\OOP\LabTask_2\obj\Debug\net7.0\LabTask_2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Exousia_Doxa\RiderProjects\OOP\LabTask_2\obj\Debug\net7.0\LabTask_2.AssemblyInfoInputs.cache
+C:\Users\Exousia_Doxa\RiderProjects\OOP\LabTask_2\obj\Debug\net7.0\LabTask_2.AssemblyInfo.cs
+C:\Users\Exousia_Doxa\RiderProjects\OOP\LabTask_2\obj\Debug\net7.0\LabTask_2.csproj.CoreCompileInputs.cache
+C:\Users\Exousia_Doxa\RiderProjects\OOP\LabTask_2\obj\Debug\net7.0\LabTask_2.dll
+C:\Users\Exousia_Doxa\RiderProjects\OOP\LabTask_2\obj\Debug\net7.0\refint\LabTask_2.dll
+C:\Users\Exousia_Doxa\RiderProjects\OOP\LabTask_2\obj\Debug\net7.0\LabTask_2.pdb
+C:\Users\Exousia_Doxa\RiderProjects\OOP\LabTask_2\obj\Debug\net7.0\ref\LabTask_2.dll
